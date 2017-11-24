@@ -1,8 +1,14 @@
 ﻿<controls:Window xmlns="https://github.com/avaloniaui"
                  xmlns:controls="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls"
                  xmlns:data="clr-namespace:Avalonia.Markup.Xaml.Data;assembly=Avalonia.Markup.Xaml"
+                 xmlns:templates="clr-namespace:Avalonia.Markup.Xaml.Templates;assembly=Avalonia.Markup.Xaml"
+                 xmlns:viewModel="clr-namespace:IgniteCacheViewer.ViewModel;assembly=IgniteCacheViewer"
                  MinWidth="500" MinHeight="300" Title="Apache Ignite Cache Explorer">
-
+  <controls:Window.DataTemplates>
+        <templates:DataTemplate DataType="viewModel:CacheViewModel">
+                <controls:TextBlock Text="{Binding Name}"/>
+        </templates:DataTemplate>
+    </controls:Window.DataTemplates>
     <controls:Grid>
         <controls:Grid.RowDefinitions>
             <controls:RowDefinition Height="Auto" />
@@ -15,7 +21,7 @@
       
         <controls:TextBlock Text="{Binding Status}" controls:Grid.Row="0" controls:Grid.ColumnSpan="2" />
         
-      <controls:ListBox controls:Grid.Row="1" controls:Grid.Column="0" Items="{Binding CacheNames}"
+      <controls:ListBox controls:Grid.Row="1" controls:Grid.Column="0" Items="{Binding Caches}"
                         SelectedItem="{Binding SelectedCache, Mode=TwoWay}"/>
       
       <controls:ListBox controls:Grid.Row="1" controls:Grid.Column="1"

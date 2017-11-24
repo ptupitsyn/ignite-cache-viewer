@@ -11,14 +11,12 @@ namespace IgniteCacheViewer.ViewModel
     {
         private readonly ICacheClient<object, object> _cache;
 
-        private readonly string _cacheName;
         private ICollection<object> _cacheEntries;
 
         public CacheViewModel(IIgniteClient ignite, string cacheName)
         {
             // TODO: Binary mode.
             _cache = ignite.GetCache<object, object>(cacheName);
-            _cacheName = cacheName;
 
             Task.Run(() =>
             {
@@ -36,9 +34,11 @@ namespace IgniteCacheViewer.ViewModel
             }
         }
 
+        public string Name => _cache.Name;
+
         public override string ToString()
         {
-            return _cacheName;
+            return Name;
         }
     }
 }

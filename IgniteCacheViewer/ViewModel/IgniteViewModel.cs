@@ -34,7 +34,7 @@ namespace IgniteCacheViewer.ViewModel
 
                     Status = $"Connected to Ignite cluster. Found {cacheNames.Count} caches.";
 
-                    _caches = cacheNames.Select(x => new CacheViewModel(_client, x)).ToArray();
+                    Caches = cacheNames.Select(x => new CacheViewModel(_client, x)).ToArray();
 
                     Console.WriteLine("CONNECTED.");
                 }
