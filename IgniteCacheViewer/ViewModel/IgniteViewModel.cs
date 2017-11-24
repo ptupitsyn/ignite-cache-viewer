@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using System.Linq;
 using System.Threading.Tasks;
 using Apache.Ignite.Core;
 using Apache.Ignite.Core.Client;
@@ -14,7 +13,8 @@ namespace IgniteCacheViewer.ViewModel
 
         private volatile IIgniteClient _client;
 
-        private ICollection<string> _cacheNames;
+        private ICollection<CacheViewModel> _caches;
+        private CacheViewModel _selectedCache;
 
         public IgniteViewModel()
         {
@@ -30,9 +30,11 @@ namespace IgniteCacheViewer.ViewModel
                     Console.WriteLine("Connecting...");
                     _client = Ignition.StartClient(cfg);
 
-                    CacheNames = _client.GetCacheNames();
+                    var cacheNames = _client.GetCacheNames();
 
-                    Status = $"Connected to Ignite cluster. Found {CacheNames.Count} caches.";
+                    Status = $"Connected to Ignite cluster. Found {cacheNames.Count} caches.";
+
+                    _caches = cacheNames.Select(x => new CacheViewModel(_client, x)).ToArray();
 
                     Console.WriteLine("CONNECTED.");
                 }
@@ -48,21 +50,27 @@ namespace IgniteCacheViewer.ViewModel
         public string Status
         {
             get => _status;
-            set
+            private set
             {
                 _status = value; 
                 OnPropertyChanged();
             }
         }
 
-        public ICollection<string> CacheNames
+        public ICollection<CacheViewModel> Caches
         {
-            get => _cacheNames;
-            set
+            get => _caches;
+            private set
             {
-                _cacheNames = value;
+                _caches = value;
                 OnPropertyChanged();
             }
+        }
+
+        public CacheViewModel SelectedCache
+        {
+            get => _selectedCache;
+            set { _selectedCache = value; OnPropertyChanged(); }
         }
     }
 }

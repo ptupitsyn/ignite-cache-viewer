@@ -15,6 +15,10 @@
       
         <controls:TextBlock Text="{Binding Status}" controls:Grid.Row="0" controls:Grid.ColumnSpan="2" />
         
-      <controls:ListBox controls:Grid.Row="1" controls:Grid.Column="0" Items="{Binding CacheNames}" />
+      <controls:ListBox controls:Grid.Row="1" controls:Grid.Column="0" Items="{Binding CacheNames}"
+                        SelectedItem="{Binding SelectedCache, Mode=TwoWay}"/>
+      
+      <controls:ListBox controls:Grid.Row="1" controls:Grid.Column="1"
+                        Items="{Binding SelectedCache.CacheEntries}" />
     </controls:Grid>
 </controls:Window>
