@@ -8,7 +8,7 @@ using Apache.Ignite.Core.Client;
 
 namespace IgniteCacheViewer.ViewModel
 {
-    public class IgniteViewModel : INotifyPropertyChanged
+    public class IgniteViewModel : ViewModelBase
     {
         private string _status = "Connecting...";
 
@@ -63,14 +63,6 @@ namespace IgniteCacheViewer.ViewModel
                 _cacheNames = value;
                 OnPropertyChanged();
             }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            Console.WriteLine("OnPropertyChanged:" + propertyName);
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
