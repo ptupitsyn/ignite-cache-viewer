@@ -2,7 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace AvaloniaCoreApplication1
+namespace IgniteCacheViewer
 {
     public class MainWindow : Window
     {

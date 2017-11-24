@@ -7,7 +7,7 @@ using Avalonia.Themes.Default;
 using Avalonia.Markup.Xaml;
 using Serilog;
 
-namespace AvaloniaCoreApplication1
+namespace IgniteCacheViewer
 {
     class App : Application
     {
