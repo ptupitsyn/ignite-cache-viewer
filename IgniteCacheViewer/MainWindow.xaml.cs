@@ -1,6 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using IgniteCacheViewer.ViewModel;
 
 namespace IgniteCacheViewer
 {
@@ -10,6 +11,8 @@ namespace IgniteCacheViewer
         {
             this.InitializeComponent();
             this.AttachDevTools();
+
+            DataContext = new IgniteViewModel();
         }
 
         private void InitializeComponent()

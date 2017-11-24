@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -24,9 +25,20 @@ namespace IgniteCacheViewer.ViewModel
                     Host = "127.0.0.1"
                 };
 
-                _client = Ignition.StartClient(cfg);
+                try
+                {
+                    Console.WriteLine("Connecting...");
+                    _client = Ignition.StartClient(cfg);
 
-                CacheNames = _client.GetCacheNames();
+                    CacheNames = _client.GetCacheNames();
+                    Console.WriteLine("CONNECTED.");
+                }
+                catch (Exception e)
+                {
+                    Status = "Failed to connect: " + e;
+                    Console.WriteLine(e);
+                    throw;
+                }
             });
         }
 
