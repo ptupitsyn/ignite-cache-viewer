@@ -31,6 +31,9 @@ namespace IgniteCacheViewer.ViewModel
                     _client = Ignition.StartClient(cfg);
 
                     CacheNames = _client.GetCacheNames();
+
+                    Status = $"Connected to Ignite cluster. Found {CacheNames.Count} caches.";
+
                     Console.WriteLine("CONNECTED.");
                 }
                 catch (Exception e)
@@ -66,6 +69,7 @@ namespace IgniteCacheViewer.ViewModel
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
+            Console.WriteLine("OnPropertyChanged:" + propertyName);
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }

@@ -21,7 +21,7 @@
 		<PackageReference Include="Avalonia" Version="0.5.1" />
 		<PackageReference Include="Avalonia.Desktop" Version="0.5.1" />
 		<PackageReference Include="Serilog.Sinks.Trace" Version="2.1.0" />
-		<PackageReference Include="Apache.Ignite" Version="2.4.0-nightly2105" />
+		<PackageReference Include="Apache.Ignite" Version="2.4.0-nightly2102" />
 	</ItemGroup>
 
 </Project>
