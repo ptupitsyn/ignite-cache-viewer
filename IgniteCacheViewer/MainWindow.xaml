@@ -1,6 +1,14 @@
 ﻿<controls:Window xmlns="https://github.com/avaloniaui"
         xmlns:controls="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls"
         xmlns:data="clr-namespace:Avalonia.Markup.Xaml.Data;assembly=Avalonia.Markup.Xaml"
-        MinWidth="500" MinHeight="300">
-    <controls:TextBlock Text="{Binding Status}" />
+        MinWidth="500" MinHeight="300" Title="Apache Ignite Cache Explorer">
+  
+  <controls:Grid>
+    <controls:Grid.RowDefinitions>
+      <controls:RowDefinition Height="Auto" />
+      <controls:RowDefinition Height="*" />
+    </controls:Grid.RowDefinitions>
+      <controls:TextBlock Text="{Binding Status}" controls:Grid.Row="0" />
+    <controls:ListBox controls:Grid.Row="1" Items="{Binding CacheNames}" />
+  </controls:Grid>
 </controls:Window>
