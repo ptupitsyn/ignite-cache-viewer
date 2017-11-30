@@ -16,7 +16,8 @@ namespace IgniteCacheViewer.ViewModel
         public CacheViewModel(IIgniteClient ignite, string cacheName)
         {
             // TODO: Binary mode.
-            _cache = ignite.GetCache<object, object>(cacheName);
+            _cache = ignite.GetCache<object, object>(cacheName)
+                .WithKeepBinary<object, object>();
 
             Task.Run(() =>
             {
