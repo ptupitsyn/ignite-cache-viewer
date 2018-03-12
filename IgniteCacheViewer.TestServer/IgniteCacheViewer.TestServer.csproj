@@ -10,7 +10,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Apache.Ignite" Version="2.4.0-nightly2160" />
+		<PackageReference Include="Apache.Ignite" Version="2.4.0" />
 	</ItemGroup>
 
 </Project>
